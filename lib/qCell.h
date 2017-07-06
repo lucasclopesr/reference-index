@@ -3,7 +3,7 @@
 
 typedef struct QCell_str *qPointer;
 
-typedef struct Cell_str{
+typedef struct QCell_str{
 	qItem content;
 	qPointer next;
 } qCell;

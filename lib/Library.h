@@ -4,9 +4,10 @@
 typedef Pointer Library;
 
 void createTree(Pointer*);
-int searchFor(Item*, Pointer);
-int insert(Item*, Pointer*);
+int searchFor(char*, Pointer, Item*);
+int insertIntoTree(char*, Pointer*, int);
 void previous(Pointer, Pointer*);
-void remove(Item*, Pointer*);
+int removeFromTree(char*, Pointer*);
+int compareKey(char*, char*);
 
 #endif

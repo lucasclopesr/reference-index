@@ -3,7 +3,6 @@
 
 typedef struct{
 	char *word;
-	int key;
 	Queue lines;
 } Item;
 

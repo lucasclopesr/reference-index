@@ -7,7 +7,7 @@ typedef struct{
 
 void createEmptyQueue(Queue*);
 int isQueueEmpty(const Queue*);
-void insertInQueue(qItem, Queue*);
+void insertInQueue(int, Queue*);
 int deleteFromQueue(Queue*, qItem*);
 
 #endif

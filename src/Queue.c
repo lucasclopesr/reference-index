@@ -3,7 +3,7 @@
 #include "../lib/Queue.h"
 #include <stdlib.h>
 
-void createEmptyQueue(Queue *q);{
+void createEmptyQueue(Queue *q){
 	q->first       = (qPointer) malloc(sizeof(qCell));
 	q->last        = q->first;
 	q->first->next = NULL;
@@ -13,11 +13,11 @@ int isQueueEmpty(const Queue *q){
 	return (q->first == q->last);
 }
 
-void insertInQueue(qItem item, Queue *q){
-	q->last->next    = (qPointer) malloc(sizeof(qCell));
-	q->last          = q->last->next;
-	q->last->content = item;
-	q->last->next    = NULL;
+void insertInQueue(int item, Queue *q){
+	q->last->next        = (qPointer) malloc(sizeof(qCell));
+	q->last              = q->last->next;
+	q->last->content.key = item;
+	q->last->next        = NULL;
 }
 
 int deleteFromQueue(Queue *q, qItem *item){
