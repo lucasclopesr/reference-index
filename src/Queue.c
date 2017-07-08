@@ -2,6 +2,7 @@
 #include "../lib/qCell.h"
 #include "../lib/Queue.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 void createEmptyQueue(Queue *q){
 	q->first       = (qPointer) malloc(sizeof(qCell));
@@ -32,4 +33,16 @@ int deleteFromQueue(Queue *q, qItem *item){
 	free(p);
 	*item = q->first->content;
 	return 1;
+}
+
+void printQueue(Queue q, FILE *outputFile){
+	qPointer p = q.first;
+	if(!isQueueEmpty(&q)){
+		// printf("Lines: ");
+		while(p != NULL){
+			p = p->next;
+			if(p == NULL) break;
+			fprintf(outputFile, "%d ", p->content.key);
+		}
+	}
 }

@@ -14,7 +14,7 @@ const char *TREE_CONSTANT = "TREE";
 const char *HASH_CONSTANT = "HASH";
 
 void lowercase(char*, int);
-void startTree(FILE*);
+void startTree(FILE*, FILE*);
 void _callTreeFunction(char*, char*);
 void _callHashFunction(char*, char*);
 
@@ -34,12 +34,13 @@ void main(int argc, char **argv){
 
 void _callTreeFunction(char *inputFilePath, char *outputFilePath){
 	FILE *inputFile = fopen(inputFilePath, "r");
+	FILE *outputFile = fopen(outputFilePath, "w");
 
 	if(inputFile == NULL){
 		//File not found
 		printf("Arquivo não encontrado.");
 	} else {
-		startTree(inputFile);
+		startTree(inputFile, outputFile);
 	}
 }
 
@@ -48,25 +49,35 @@ void _callHashFunction(char *inputFilePath, char *outputFilePath){
 	printf("%s\n", outputFilePath);
 }
 
-void startTree(FILE *input){
-	char word[1024], breakLine;
+void startTree(FILE *input, FILE *outputFile){
+	char word[1024], testBreakLine1, testBreakLine2;
 	int size, countLines = 1;
 	Library tree;
 	Item i;
 
 	createTree(&tree);
 
-	while(fscanf(input, "%s%c", word, &breakLine) == 2){
+	while((testBreakLine1 = fgetc(input)) != EOF){
+		if(testBreakLine1 == 10){
+			if((testBreakLine2 = fgetc(input)) == 10){
+				countLines++;
+			}
+			countLines++;
+			ungetc(testBreakLine2, input);
+		}
+		ungetc(testBreakLine1, input);
+
+		fscanf(input, "%1023s", word);
+
 		size = strlen(word);
 		
 		if(size >= 3){
 			lowercase(word, size);
 			insertIntoTree(word, &tree, countLines);
 		}
-		
-
-		if(breakLine == '\n') countLines++;
 	}
+
+	centralWalk(tree, outputFile);
 }
 
 void lowercase(char *word, int size){
