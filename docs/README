@@ -3,14 +3,15 @@ Disciplina: AEDS II
 Matrícula: 2016006670
 
 Para compilar e executar o código (utilizando gcc):
-
+ - Ir até a pasta output
+ - Executar o script compile.sh
 
 Ou, para compilar o projeto sem o script:
 
 Na pasta src:
- 
+gcc -c -g -O0 Queue.c -o ../output/Queue.o
+gcc -c -g -O0 Library.c -o ../output/Library.o
+gcc -c -g -O0 TP2.c -o ../output/TP2.o 
 
 Na pasta output:
-
-
-
+gcc -o TP2.exe TP2.o

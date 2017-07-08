@@ -8,6 +8,6 @@ int searchFor(char*, Pointer, Item*);
 void insertIntoTree(char*, Pointer*, int);
 void previous(Pointer, Pointer*);
 int removeFromTree(char*, Pointer*);
-int compareKey(char*, char*);
+void centralWalk(Pointer, FILE *);
 
 #endif

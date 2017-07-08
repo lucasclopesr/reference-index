@@ -3,7 +3,7 @@
 *   Autor: Lucas Caetano Lopes Rodrigues               *
 *   Disciplina: AEDS 2                                 * 
 *   Curso: Ciência da Computação                       *
-*   Where there is ruin there is hope for a treasure.  *
+*   Raise your words, not your voice.                  *
 ****************************************************** */
 
 /*#include "Queue.c"*/
@@ -45,8 +45,7 @@ void _callTreeFunction(char *inputFilePath, char *outputFilePath){
 }
 
 void _callHashFunction(char *inputFilePath, char *outputFilePath){
-	printf("%s\n", inputFilePath);
-	printf("%s\n", outputFilePath);
+	printf("Não implementado!\n");
 }
 
 void startTree(FILE *input, FILE *outputFile){
